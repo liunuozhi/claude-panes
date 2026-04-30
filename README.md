@@ -6,8 +6,10 @@ A Claude Code plugin that opens [Ghostty](https://ghostty.org) split panes runni
 
 ## Commands
 
-- **`/split-new`** — Open a new Ghostty split pane in the current working directory and start a fresh `claude` session.
-- **`/split-fork`** — Open a new Ghostty split pane and fork the current session into it (`claude --continue --fork-session`). Both panes share history up to the fork point, then diverge.
+- **`/split-new [prompt]`** — Open a new Ghostty split pane in the current working directory and start a fresh `claude` session. If `[prompt]` is given, it is passed to `claude` as the initial prompt.
+- **`/split-fork [prompt]`** — Open a new Ghostty split pane and fork the current session into it (`claude --continue --fork-session`). Both panes share history up to the fork point, then diverge. If `[prompt]` is given, it is sent as the next user turn in the forked session.
+
+> **Note on quoting:** the prompt is wrapped in `"..."` and typed into the new pane verbatim — embedding literal double quotes in your prompt will break the wrapping. For prompts with quotes, type them in the new pane after it opens.
 
 ## Requirements
 
@@ -29,7 +31,7 @@ Confirm with `claude plugin list`.
 Each command shells out to `bin/open-ghostty-split.sh`, which runs an `osascript` snippet that talks to Ghostty's AppleScript dictionary:
 
 1. Build a `new surface configuration` with the current cwd as `initial working directory`.
-2. Set `initial input` to either `claude\n` or `claude --continue --fork-session\n`.
+2. Set `initial input` to `<cmd>\n` (or `<cmd> "<prompt>"\n` if a prompt was given), where `<cmd>` is `claude` or `claude --continue --fork-session`.
 3. `split` the focused terminal of the front window to the right with that configuration. If no window is open, fall back to `new window`.
 
 That's the whole mechanism — no session-file copying, no daemons. Forking is delegated to Claude Code's built-in `--fork-session` flag.

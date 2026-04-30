@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
-# Open a Ghostty split pane at the given cwd and type the given input.
-# Usage: open-ghostty-split.sh <cwd> [input]
+# Open a Ghostty split pane at <cwd> and type "<cmd>" or "<cmd> \"<prompt>\"".
+# Usage: open-ghostty-split.sh <cwd> <cmd> [prompt]
 set -euo pipefail
 
 cwd="${1:?cwd required}"
-input="${2:-}"
+cmd="${2:?cmd required}"
+prompt="${3:-}"
+
+if [ -n "$prompt" ]; then
+    input="$cmd \"$prompt\""$'\n'
+else
+    input="$cmd"$'\n'
+fi
 
 osascript \
     -e 'on run argv' \
     -e '    tell application "Ghostty"' \
     -e '        set cfg to new surface configuration' \
     -e '        set initial working directory of cfg to (item 1 of argv)' \
-    -e '        if (count of argv) > 1 then' \
-    -e '            set initial input of cfg to (item 2 of argv)' \
-    -e '        end if' \
+    -e '        set initial input of cfg to (item 2 of argv)' \
     -e '        if (count of windows) > 0 then' \
     -e '            try' \
     -e '                split (focused terminal of selected tab of front window) direction right with configuration cfg' \
