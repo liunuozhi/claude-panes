@@ -2,6 +2,8 @@
 
 A Claude Code plugin that opens [Ghostty](https://ghostty.org) split panes running Claude Code from your current session.
 
+> **Scope:** macOS + Ghostty only. The split is driven through Ghostty's AppleScript dictionary via `osascript`, so other terminals (iTerm2, WezTerm, Kitty, Alacritty…) and other operating systems are not supported.
+
 ## Commands
 
 - **`/split-new`** — Open a new Ghostty split pane in the current working directory and start a fresh `claude` session.
