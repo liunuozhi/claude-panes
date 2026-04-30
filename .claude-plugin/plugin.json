@@ -1,5 +1,15 @@
 {
   "name": "claude-panes",
+  "version": "0.1.0",
   "description": "Open Ghostty split panes running Claude Code (fresh or forked)",
-  "version": "0.1.0"
+  "author": {
+    "name": "liu"
+  },
+  "keywords": [
+    "ghostty",
+    "split-pane",
+    "fork-session",
+    "macos",
+    "claude-code"
+  ]
 }
