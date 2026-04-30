@@ -19,12 +19,14 @@ A Claude Code plugin that opens [Ghostty](https://ghostty.org) split panes runni
 
 ## Install
 
-```bash
-claude plugin marketplace add /path/to/claude-panes
-claude plugin install claude-panes@claude-panes-dev
+From inside Claude Code, add the marketplace and install the plugin:
+
+```
+/plugin marketplace add liunuozhi/claude-panes
+/plugin install claude-panes@claude-panes
 ```
 
-Confirm with `claude plugin list`.
+Confirm with `/plugin`.
 
 ## How it works
 

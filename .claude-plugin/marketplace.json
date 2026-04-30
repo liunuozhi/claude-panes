@@ -1,13 +1,14 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "claude-panes-dev",
-  "description": "Local dev marketplace for the claude-panes plugin",
+  "name": "claude-panes",
+  "description": "Marketplace for the claude-panes plugin",
   "owner": {
     "name": "liu"
   },
   "plugins": [
     {
       "name": "claude-panes",
+      "version": "0.1.0",
       "description": "Open Ghostty split panes running Claude Code (fresh or forked)",
       "author": {
         "name": "liu"
