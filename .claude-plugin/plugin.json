@@ -1,0 +1,5 @@
+{
+  "name": "claude-panes",
+  "description": "Open Ghostty split panes running Claude Code (fresh or forked)",
+  "version": "0.1.0"
+}
