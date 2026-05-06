@@ -1,6 +1,6 @@
 {
   "name": "claude-panes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Open Ghostty split panes running Claude Code (fresh or forked)",
   "author": {
     "name": "liu"
